@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/rahulchd_/c-stuff/rahulll/openStuff/main/app'
+relocations:     []
+...

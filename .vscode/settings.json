@@ -1,0 +1,13 @@
+{
+  "cSpell.words": [
+    "glfw",
+    "GLFW",
+    "OPENGL",
+    "Programiv",
+    "Shaderiv",
+    "Wwindow"
+  ],
+  "files.associations": {
+    "glad.h": "c"
+  }
+}

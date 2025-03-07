@@ -1,0 +1,107 @@
+/*OLD TASKS.JSON (does not compile c) */
+
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       "type": "cppbuild",
+//       "label": "C/C++: clang build active file",
+//       "command": "/usr/bin/clang",
+//       "args": [
+//         "-std=c++17",
+//         "-Wall",
+//         "-fcolor-diagnostics",
+//         "-fansi-escape-codes",
+//         "-g",
+//         "-I${workspaceFolder}/dependencies/include",
+//         "-L${workspaceFolder}/dependencies/library",
+//         "${workspaceFolder}/*.cpp",
+//         "${workspaceFolder}/glad.c",
+//         "${workspaceFolder}/dependencies/library/libglfw.3.4.dylib",
+//         "-o",
+//         "${workspaceFolder}/app",
+//         "-framework",
+//         "openGL",
+//         "-framework",
+//         "Cocoa",
+//         "-framework",
+//         "IOKit",
+//         "-framework",
+//         "CoreVideo",
+//         "-framework",
+//         "CoreFoundation",
+//         "-Wno-deprecated"
+//       ],
+//       "options": {
+//         "cwd": "${fileDirname}"
+//       },
+//       "problemMatcher": ["$gcc"],
+//       "group": {
+//         "kind": "build",
+//         "isDefault": true
+//       },
+//       "detail": "compiler: /usr/bin/clang"
+//     }
+//   ]
+// }
+
+/* NEW TASKS.JSON (compiles the cpp and c files and then links them properly together )*/
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile glad.c",
+      "type": "shell",
+      "command": "/usr/bin/clang",
+      "args": [
+        "-std=c11",
+        "-c",
+        "${workspaceFolder}/glad.c",
+        "-o",
+        "${workspaceFolder}/glad.o"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Compile C++ files and Link",
+      "type": "shell",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-g",
+        "-I${workspaceFolder}/dependencies/include",
+        "-L${workspaceFolder}/dependencies/library",
+        "${workspaceFolder}/*.cpp",
+        "${workspaceFolder}/glad.o",
+        "${workspaceFolder}/dependencies/library/libglfw.3.4.dylib",
+        "-o",
+        "${workspaceFolder}/app",
+        "-framework",
+        "OpenGL",
+        "-framework",
+        "Cocoa",
+        "-framework",
+        "IOKit",
+        "-framework",
+        "CoreVideo",
+        "-framework",
+        "CoreFoundation",
+        "-Wno-deprecated"
+      ],
+      "dependsOn": ["Compile glad.c"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}

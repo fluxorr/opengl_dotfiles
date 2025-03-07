@@ -8,6 +8,7 @@
     "Wwindow"
   ],
   "files.associations": {
-    "glad.h": "c"
+    "glad.h": "c",
+    "ios": "cpp"
   }
 }
